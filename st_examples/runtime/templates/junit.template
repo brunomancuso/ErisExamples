@@ -1,0 +1,19 @@
+import static org.junit.Assert.assertTrue;
+
+import org.bam.eris.engine.BatchConsole;
+import org.bam.eris.engine.ConfigException;
+import org.bam.eris.engine.FailedTestCaseException;
+import org.junit.Test;
+
+public class __TEST_CASE__ {
+
+	@Test
+	public void test() throws ConfigException {
+		try {
+			BatchConsole.run(__TEST_CASE_NUMBER__);
+		} catch (FailedTestCaseException e) {
+			assertTrue(e.getMessage(), false);
+		}
+	}
+
+}

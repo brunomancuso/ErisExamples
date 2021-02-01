@@ -1,0 +1,25 @@
+[
+  {
+    "path": "logs/database.footprint",
+    "name": "database",
+    "groups" : [],
+    "patterns": [
+   ]
+  },
+  {
+    "path": "logs/my_service.footprint",
+    "name": "my_service",
+    "groups" : [],
+    "patterns": [
+   ]
+  },
+  {
+    "path": "logs/third_party_authorization.footprint",
+    "name": "third_party_authorization",
+    "groups" : [],
+    "patterns": [
+        "\\<date\\>(.*)\\<\\/date\\>"
+   ]
+  }
+
+]

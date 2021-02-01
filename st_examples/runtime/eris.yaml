@@ -1,0 +1,4 @@
+notepad: "notepad++"
+diffw: "C:\\Program Files (x86)\\WinMerge\\WinMergeU.exe"
+factory: st_examples.ErisFactory
+testCaseDirectory: ../src/main/test-case

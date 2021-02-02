@@ -7,7 +7,7 @@ public class CustomerBuilder {
 	private String lastName;
 	private int age;
 	private boolean isRegular;
-	
+
 	public CustomerBuilder firstName(String name) {
 		this.firstName = name;
 		return this;

@@ -21,7 +21,6 @@ public class ServiceBuilder implements IBuilder {
 		return Scope.TEST_CASE;
 	}
 
-
 	@Override
 	public void destroy() {
 		closeables.forEach(c -> {
@@ -29,17 +28,17 @@ public class ServiceBuilder implements IBuilder {
 				c.close();
 			} catch (IOException e) {
 				e.printStackTrace();
-			}	
+			}
 		});
 	}
 
 	public MyDatabaseService createDatabaseService() {
-		MyDatabaseService service = closeable(new MyDatabaseService());		
+		MyDatabaseService service = closeable(new MyDatabaseService());
 		return service;
 	}
 
 	public MyService createService() {
-		MyService service = closeable(new MyService());		
+		MyService service = closeable(new MyService());
 		return service;
 	}
 

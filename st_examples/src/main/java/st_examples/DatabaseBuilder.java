@@ -18,18 +18,16 @@ import org.threewaves.eris.engine.IBuilder;
 import org.threewaves.eris.engine.footprint.Footprint;
 import org.threewaves.eris.util.Sql;
 
-
 public class DatabaseBuilder implements IBuilder {
 
 	private static final String db = "my_db";
-	private final Map<String, String> tableOrderBy = Stream.of(new String[][] { 
-	     { "MY_TABLE", "ID" }, 
-	 }).collect(Collectors.toMap(data -> data[0], data -> data[1]));
+	private final Map<String, String> tableOrderBy = Stream.of(new String[][] { { "MY_TABLE", "ID" }, })
+			.collect(Collectors.toMap(data -> data[0], data -> data[1]));
 	private final Scope scope;
 	private Footprint log;
 	private boolean debug = false;
 	private String name;
-	
+
 	public DatabaseBuilder(Scope scope, String name) {
 		this.scope = scope;
 		this.name = name;
@@ -41,25 +39,27 @@ public class DatabaseBuilder implements IBuilder {
 			deleteTables();
 		}
 	}
+
 	public void debug() {
 		debug = true;
 	}
-	
+
 	@Override
 	public void destroy() {
 		if (scope == Scope.TEST_CASE) {
 			for (String table : tableOrderBy.keySet()) {
-				log.write(tablesToFootprint(table));				
+				log.write(tablesToFootprint(table));
 			}
-		}		
+		}
 	}
 
 	private void createDb(Path path) {
 		try {
-			//check if db has been created
+			// check if db has been created
 			if (tables().size() == 0) {
 				List<String> args = new ArrayList<>();
-				args.add("--inlineRc=url=jdbc:hsqldb:mem:" + db + ",transiso=TRANSACTION_READ_COMMITTED,user=sa,password=");
+				args.add("--inlineRc=url=jdbc:hsqldb:mem:" + db
+						+ ",transiso=TRANSACTION_READ_COMMITTED,user=sa,password=");
 				try (Stream<Path> s = Files.list(path)) {
 					s.forEach(f -> {
 						args.add(f.toString());
@@ -76,9 +76,9 @@ public class DatabaseBuilder implements IBuilder {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Connection connectDb() {
-		return Sql.connect("org.hsqldb.jdbcDriver", "jdbc:hsqldb:mem:" + db , "sa", "", 1);
+		return Sql.connect("org.hsqldb.jdbcDriver", "jdbc:hsqldb:mem:" + db, "sa", "", 1);
 	}
 
 	private void deleteTables() {
@@ -118,8 +118,8 @@ public class DatabaseBuilder implements IBuilder {
 					select += ",";
 				}
 			}
-			result = sql.select(ls.size(), "SELECT " + select + " FROM " + tableName +
-							" ORDER BY " + tableOrderBy.get(tableName));
+			result = sql.select(ls.size(),
+					"SELECT " + select + " FROM " + tableName + " ORDER BY " + tableOrderBy.get(tableName));
 			String buff = "";
 			for (int i = 0; i < result.size(); i++) {
 				buff += tableName + ":" + "\r\n";

@@ -13,7 +13,7 @@ import com.levent.webservice.model.response.CustomerResponse;
 public class CustomerControllerFootprint implements ICustomerController, Closeable {
 	private final ICustomerController controller;
 	private final Footprint log;
-		
+
 	public CustomerControllerFootprint(ICustomerController controller) {
 		this.controller = controller;
 		this.log = new Footprint("customer_service");

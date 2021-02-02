@@ -11,12 +11,12 @@ import com.levent.webservice.model.response.CustomerResponse;
 public class CustomerControllerWrapper implements ICustomerController, Closeable {
 	private CustomerControllerFootprint footPrint;
 	private ICustomerController controller;
-	
+
 	public CustomerControllerWrapper(ICustomerController controller) {
 		this.controller = controller;
 		this.footPrint = new CustomerControllerFootprint(controller);
 	}
-	
+
 	public ICustomerController footPrint() {
 		return footPrint;
 	}

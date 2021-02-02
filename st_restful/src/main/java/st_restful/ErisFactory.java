@@ -9,14 +9,12 @@ import org.threewaves.eris.engine.ICommand;
 import org.threewaves.eris.engine.IErisFactory;
 import org.threewaves.eris.engine.IBuilder.Scope;
 
-public class ErisFactory implements IErisFactory {	
+public class ErisFactory implements IErisFactory {
 
 	@Override
 	public List<IBuilder> createBuilders(Scope scope) {
 		if (scope == Scope.TEST_CASE) {
-			return Arrays.asList(new IBuilder[] { 
-				new CustomerServiceBuilder()
-			});
+			return Arrays.asList(new IBuilder[] { new CustomerServiceBuilder() });
 		}
 		return Collections.emptyList();
 	}

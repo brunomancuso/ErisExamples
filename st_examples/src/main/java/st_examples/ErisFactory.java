@@ -14,15 +14,10 @@ public class ErisFactory implements IErisFactory {
 	@Override
 	public List<IBuilder> createBuilders(Scope scope) {
 		if (scope == Scope.TEST_CASE) {
-			return Arrays.asList(new IBuilder[] { 
-					new ServiceBuilder(), 
-					new DatabaseBuilder(Scope.TEST_CASE, "b")
-			});
+			return Arrays.asList(new IBuilder[] { new ServiceBuilder(), new DatabaseBuilder(Scope.TEST_CASE, "b") });
 		}
 		if (scope == Scope.ENGINE) {
-			return Arrays.asList(new IBuilder[] { 
-					new DatabaseBuilder(Scope.ENGINE, "c")
-			});
+			return Arrays.asList(new IBuilder[] { new DatabaseBuilder(Scope.ENGINE, "c") });
 		}
 		return Collections.emptyList();
 	}

@@ -15,11 +15,11 @@ public class CustomerServiceBuilder implements IBuilder {
 	private List<Closeable> closeables = new ArrayList<>();
 	private boolean log;
 
-	//Gets created one per test case
+	// Gets created one per test case
 	public CustomerServiceBuilder() {
 		CustomerRepositoryCacheImpl.resetCache();
 	}
-	
+
 	@Override
 	public Scope scope() {
 		return Scope.TEST_CASE;
@@ -37,17 +37,17 @@ public class CustomerServiceBuilder implements IBuilder {
 				c.close();
 			} catch (IOException e) {
 				e.printStackTrace();
-			}	
+			}
 		});
 	}
 
 	public CustomerControllerWrapper createCustomerService() {
 		ICustomerController main = new CustomerController();
-		main = log? new CustomerControllerLogger(main) : main;
-		CustomerControllerWrapper service = closeable(new CustomerControllerWrapper(main));		
+		main = log ? new CustomerControllerLogger(main) : main;
+		CustomerControllerWrapper service = closeable(new CustomerControllerWrapper(main));
 		return service;
 	}
-	
+
 	private <T extends Closeable> T closeable(T c) {
 		closeables.add(c);
 		return c;

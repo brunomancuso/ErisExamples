@@ -11,12 +11,12 @@ public class MyDatabaseService implements Closeable {
 
 	@Override
 	public void close() throws IOException {
-		
+
 	}
 
 	public void insert(long id, String text) {
 		try (Sql sql = new Sql(DatabaseBuilder.connectDb(), true)) {
-			boolean b = sql.update("insert into MY_TABLE values(" + id + ", '"+ text + "')");
+			boolean b = sql.update("insert into MY_TABLE values(" + id + ", '" + text + "')");
 			System.out.println("Record inserted = " + b);
 		}
 	}

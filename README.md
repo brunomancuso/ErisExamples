@@ -1,4 +1,4 @@
-# ErisExamples
+# Eris Examples
 Eris Terminal Examples, this contains a set of examples for use of the Eris Terminal Framework. Please view the [Eris Terminal Framework](https://github.com/brunomancuso/ErisTerminal) for better understanding how it works.
 
 - st_examples.
